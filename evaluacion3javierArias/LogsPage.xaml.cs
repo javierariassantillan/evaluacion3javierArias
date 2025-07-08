@@ -1,0 +1,19 @@
+﻿using evaluacion3javierArias.Services;
+
+namespace evaluacion3javierArias;
+
+public partial class LogsPage : ContentPage
+{
+    private readonly LogService _logService = new("Arias");
+
+    public LogsPage()
+    {
+        InitializeComponent();
+        LoadLogs();
+    }
+
+    private async void LoadLogs()
+    {
+        LogsLabel.Text = await _logService.ReadLogsAsync();
+    }
+}
