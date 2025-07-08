@@ -2,8 +2,9 @@ namespace evaluacion3javierArias;
 
 public partial class FormularioPage : ContentPage
 {
-	public FormularioPage()
-	{
-		InitializeComponent();
-	}
+    public FormularioPage()
+    {
+        InitializeComponent();
+        BindingContext = new PrendaViewModel();
+    }
 }

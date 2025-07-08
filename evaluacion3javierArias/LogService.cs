@@ -1,51 +1,16 @@
-﻿using System.Text;
+﻿namespace evaluacion3javierArias;
 
-
-
-namespace evaluacion3javierArias.Services
-
+public static class LogService
 {
-
-    public class LogService
-
+    public static List<string> ObtenerLogs()
     {
-
-        private readonly string logPath;
-
-
-
-        public LogService(string apellido)
-
+        return new List<string>
         {
-
-            string fileName = $"Logs_{apellido}.txt";
-
-            logPath = Path.Combine(FileSystem.AppDataDirectory, fileName);
-
-        }
-
-
-
-        public async Task AppendLogAsync(string mensaje)
-
-        {
-
-            var logEntry = $"{mensaje} el {DateTime.Now:dd/MM/yyyy HH:mm}\n";
-
-            await File.AppendAllTextAsync(logPath, logEntry, Encoding.UTF8);
-
-        }
-
-
-
-        public async Task<string> ReadLogsAsync()
-
-        {
-
-            return File.Exists(logPath) ? await File.ReadAllTextAsync(logPath) : "No hay logs aún.";
-
-        }
-
+            "Aplicación iniciada",
+            "Usuario autenticado",
+            "Base de datos conectada",
+            "Error al guardar",
+            "Sesión finalizada"
+        };
     }
-
 }

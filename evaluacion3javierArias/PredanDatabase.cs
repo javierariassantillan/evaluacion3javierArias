@@ -1,37 +1,24 @@
 ﻿using SQLite;
 
-using evaluacion3javierArias.Models;
+namespace evaluacion3javierArias;
 
-
-
-namespace evaluacion3javierArias.Data
-
+public class PrendaDatabase
 {
+    readonly SQLiteAsyncConnection _database;
 
-    public class PrendaDatabase
-
+    public PrendaDatabase(string dbPath)
     {
-
-        private readonly SQLiteAsyncConnection _database;
-
-
-
-        public PrendaDatabase(string dbPath)
-
-        {
-
-            _database = new SQLiteAsyncConnection(dbPath);
-
-            _database.CreateTableAsync<Prenda>().Wait();
-
-        }
-
-
-
-        public Task<List<Prenda>> GetPrendasAsync() => _database.Table<Prenda>().ToListAsync();
-
-        public Task<int> SavePrendaAsync(Prenda item) => _database.InsertAsync(item);
-
+        _database = new SQLiteAsyncConnection(dbPath);
+        _database.CreateTableAsync<Prenda>().Wait();
     }
 
+    public Task<List<Prenda>> GetPrendasAsync()
+    {
+        return _database.Table<Prenda>().ToListAsync();
+    }
+
+    public Task<int> SavePrendaAsync(Prenda prenda)
+    {
+        return _database.InsertAsync(prenda);
+    }
 }

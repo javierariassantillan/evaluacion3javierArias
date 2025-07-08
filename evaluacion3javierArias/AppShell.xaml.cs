@@ -1,4 +1,4 @@
-﻿namespace evaluacion3javierArias
+namespace evaluacion3javierArias
 {
     public partial class AppShell : Shell
     {
